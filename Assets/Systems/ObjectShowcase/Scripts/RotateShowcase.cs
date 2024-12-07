@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RotateShowcase : MonoBehaviour
 {
-    private float m_RotationSpeed = 1f;
+    private float m_RotationSpeed = 0.6f;
 
     private void FixedUpdate()
     {
