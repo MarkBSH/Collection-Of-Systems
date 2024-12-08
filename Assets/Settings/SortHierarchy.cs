@@ -26,6 +26,8 @@ public class HierarchySorter : EditorWindow
             }
         }
 
+        index = 100;
+
         for (int i = 0; i < allObjects.Length; i++)
         {
             if (
