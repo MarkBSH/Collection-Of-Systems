@@ -2,10 +2,27 @@ using UnityEngine;
 
 public class RotateShowcase : MonoBehaviour
 {
-    [SerializeField] private float m_RotationSpeed = 0.6f;
-    private bool isRotating = true;
+    #region Unity Methods
 
     private void FixedUpdate()
+    {
+        RotateObject();
+    }
+
+    #endregion
+
+    #region Components
+
+
+
+    #endregion
+
+    #region Rotation
+
+    public float m_RotationSpeed = 0.6f;
+    private bool isRotating = true;
+
+    private void RotateObject()
     {
         if (isRotating)
         {
@@ -17,4 +34,15 @@ public class RotateShowcase : MonoBehaviour
     {
         isRotating = !isRotating;
     }
+
+    #endregion
+
+    #region Debugging
+
+    private void DebugWarning(string _warning)
+    {
+        Debug.LogWarning("Warning: " + _warning);
+    }
+
+    #endregion
 }
