@@ -51,8 +51,8 @@ public class FirstPersonMovement : MonoBehaviour
 
     private void MoveCharacter()
     {
-        Vector3 move = transform.forward * m_MoveInput.y + transform.right * m_MoveInput.x;
-        m_Controller.Move(move * m_Speed * Time.deltaTime);
+        Vector3 _move = transform.forward * m_MoveInput.y + transform.right * m_MoveInput.x;
+        m_Controller.Move(_move * m_Speed * Time.deltaTime);
     }
 
     #endregion

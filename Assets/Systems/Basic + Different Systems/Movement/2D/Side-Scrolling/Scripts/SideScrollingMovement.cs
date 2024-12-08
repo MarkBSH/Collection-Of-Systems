@@ -46,6 +46,10 @@ public class SideScrollingMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext _context)
     {
         m_MoveInput = _context.ReadValue<Vector2>();
+        if (m_MoveInput.magnitude > 1)
+        {
+            m_MoveInput.Normalize();
+        }
     }
 
     private void MoveCharacter()

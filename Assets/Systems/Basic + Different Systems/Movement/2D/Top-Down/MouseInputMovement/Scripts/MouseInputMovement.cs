@@ -72,36 +72,39 @@ public class MouseInputMovement : MonoBehaviour
 
     #region Movement
 
-    public float m_speed = 5f;
+    public float m_Speed = 5f;
 
     private void SetSpeed()
     {
-        m_agent.speed = m_speed;
+        m_agent.speed = m_Speed;
     }
 
     #endregion
 
     #region Pathfinding
 
-    private NavMeshPath m_path;
-    private Vector3 m_target;
+    private NavMeshPath m_Path;
+    private Vector3 m_Target;
 
     private void NewPath()
     {
-        m_path = new NavMeshPath();
+        m_Path = new NavMeshPath();
     }
 
     private bool CalculatePath()
     {
-        NavMesh.CalculatePath(transform.position, m_target, NavMesh.AllAreas, m_path);
-        DebugWarning("Path is incomplete");
-        return m_path.status == NavMeshPathStatus.PathComplete;
+        NavMesh.CalculatePath(transform.position, m_Target, NavMesh.AllAreas, m_Path);
+        if (m_Path.status != NavMeshPathStatus.PathComplete)
+        {
+            DebugWarning("Path could not be calculated");
+        }
+        return m_Path.status == NavMeshPathStatus.PathComplete;
     }
 
     private void SetDestination(RaycastHit _hit)
     {
-        m_target = _hit.point;
-        m_agent.SetDestination(m_target);
+        m_Target = _hit.point;
+        m_agent.SetDestination(m_Target);
     }
 
     #endregion

@@ -67,12 +67,16 @@ public class ThirdPersonMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext _context)
     {
         m_MoveInput = _context.ReadValue<Vector2>();
+        if (m_MoveInput.magnitude > 1)
+        {
+            m_MoveInput.Normalize();
+        }
     }
 
     private void MoveCharacter()
     {
-        Vector3 move = m_CameraForward * m_MoveInput.y + transform.right * m_MoveInput.x;
-        m_Controller.Move(move * m_Speed * Time.deltaTime);
+        Vector3 _move = m_CameraForward * m_MoveInput.y + transform.right * m_MoveInput.x;
+        m_Controller.Move(_move * m_Speed * Time.deltaTime);
     }
 
     #endregion
