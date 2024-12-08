@@ -23475,6 +23475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1878253537}
+  - component: {fileID: 1878253538}
   - component: {fileID: 1878253535}
   - component: {fileID: 1878253534}
   - component: {fileID: 1878253533}
@@ -23529,8 +23530,8 @@ MonoBehaviour:
     m_ActionName: 'ObjectShowcase/ChangeObjectDown[/Keyboard/s]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WASDTopDown, Assembly-CSharp
+      - m_Target: {fileID: 1878253538}
+        m_TargetAssemblyTypeName: WASDGridBasedMovement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -23647,6 +23648,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1878253538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878253530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987fc1fb8a9bddc4898816c52024599c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveTime: 0.5
 --- !u!1 &1884292191
 GameObject:
   m_ObjectHideFlags: 0
