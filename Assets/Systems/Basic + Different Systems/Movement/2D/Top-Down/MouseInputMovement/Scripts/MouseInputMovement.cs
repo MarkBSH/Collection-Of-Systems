@@ -14,7 +14,7 @@ public class MouseInputMovement : MonoBehaviour
 
     private void Update()
     {
-        OnMouseInput();
+        MouseInputCheck();
     }
 
     #endregion
@@ -22,19 +22,21 @@ public class MouseInputMovement : MonoBehaviour
     #region Components
 
     private NavMeshAgent m_agent;
-    private Camera m_mainCamera;
 
     private void GetComponents()
     {
         m_agent = GetComponent<NavMeshAgent>();
-        m_mainCamera = Camera.main;
+        if (m_agent == null)
+        {
+            DebugWarning("No NavMeshAgent component found. Please add a NavMeshAgent component to the GameObject");
+        }
     }
 
     #endregion
 
     #region Mouse Input
 
-    private void OnMouseInput()
+    private void MouseInputCheck()
     {
         if (Input.GetMouseButton(0))
         {
@@ -42,7 +44,7 @@ public class MouseInputMovement : MonoBehaviour
             {
                 if (CalculatePath())
                 {
-                    SetDestination(_hit);
+                    SetDestination(m_Hit);
                 }
             }
         }
@@ -52,13 +54,13 @@ public class MouseInputMovement : MonoBehaviour
 
     #region Raycasting
 
-    private RaycastHit _hit;
+    private RaycastHit m_Hit;
 
     private bool CheckRay()
     {
         Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(_ray, out _hit))
+        if (Physics.Raycast(_ray, out m_Hit))
         {
             return true;
         }

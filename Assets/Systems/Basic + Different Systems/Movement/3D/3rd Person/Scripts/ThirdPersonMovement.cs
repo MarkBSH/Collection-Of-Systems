@@ -23,7 +23,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     #region Components
 
-    public CharacterController m_Controller;
+    private CharacterController m_Controller;
 
     private void GetComponents()
     {
@@ -53,8 +53,8 @@ public class ThirdPersonMovement : MonoBehaviour
     private void CameraForward()
     {
         m_CameraForward = m_Camera.transform.forward;
-        m_CameraForward.y = 0; // Ignore the y component of the camera's forward vector
-        m_CameraForward.Normalize(); // Normalize to maintain consistent movement speed
+        m_CameraForward.y = 0;
+        m_CameraForward.Normalize();
     }
 
     #endregion
