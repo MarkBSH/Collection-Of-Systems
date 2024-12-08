@@ -60,8 +60,8 @@ public class FirstPersonMovement : MonoBehaviour
     #region Jumping
 
     private bool isGrounded;
-    public Transform m_GroundCheck;
-    public float m_GroundCheckRadius = 0.4f;
+    private Transform m_GroundCheck;
+    public float m_GroundCheckRadius = 0.2f;
     public LayerMask m_GroundLayer;
 
     public float m_Gravity = -9.81f;

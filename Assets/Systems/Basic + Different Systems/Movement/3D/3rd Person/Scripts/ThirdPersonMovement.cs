@@ -9,6 +9,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         GetComponents();
         GetCamera();
+        GetGroundCheck();
     }
 
     private void Update()
@@ -84,12 +85,21 @@ public class ThirdPersonMovement : MonoBehaviour
     #region Jumping
 
     private bool isGrounded;
-    public Transform m_GroundCheck;
-    public float m_GroundCheckRadius = 0.4f;
+    private Transform m_GroundCheck;
+    public float m_GroundCheckRadius = 0.2f;
     public LayerMask m_GroundLayer;
 
     public float m_Gravity = -9.81f;
     private Vector3 m_Velocity;
+
+    private void GetGroundCheck()
+    {
+        m_GroundCheck = transform.Find("GroundCheck");
+        if (m_GroundCheck == null)
+        {
+            DebugWarning("No GroundCheck found. Please add a GroundCheck to the GameObject");
+        }
+    }
 
     public void OnJump(InputAction.CallbackContext _context)
     {

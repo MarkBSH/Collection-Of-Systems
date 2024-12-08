@@ -62,10 +62,10 @@ public class SideScrollingMovement : MonoBehaviour
     #region Jumping
 
     public float m_JumpForce = 10f;
-    private Transform m_GroundCheck;
-    public LayerMask m_GroundLayer;
     private bool isGrounded;
-    private float m_GroundCheckRadius = 0.2f;
+    private Transform m_GroundCheck;
+    public float m_GroundCheckRadius = 0.2f;
+    public LayerMask m_GroundLayer;
 
     private void GetGroundCheck()
     {
