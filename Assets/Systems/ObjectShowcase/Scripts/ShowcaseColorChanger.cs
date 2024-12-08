@@ -23,43 +23,42 @@ public class ShowcaseColorChanger : MonoBehaviour
         }
     }
 
-    [SerializeField] private List<Material> m_Colors = new();
-    [SerializeField] private List<GameObject> m_ShowColorObjects = new();
-    private int m_CurrentColorIndex = 0;
-    private int m_pastColorIndex = 0;
+    [SerializeField] private List<Material> m_ColorMaterials = new();
+    [SerializeField] private List<GameObject> m_ColorShowcaseObjects = new();
+    private int m_CurrentObjectIndex = 0;
+    private int m_PreviousColorIndex = 0;
+    private int CurrentColorIndex
+    {
+        get => m_CurrentObjectIndex;
+        set
+        {
+            m_CurrentObjectIndex = (value + m_ColorMaterials.Count) % m_ColorMaterials.Count;
+            SetColors();
+        }
+    }
 
     private void Awake()
     {
-        foreach (GameObject _obj in m_ShowColorObjects)
+        foreach (GameObject obj in m_ColorShowcaseObjects)
         {
-            _obj.SetActive(false);
+            obj.SetActive(false);
         }
-        m_ShowColorObjects[m_CurrentColorIndex].SetActive(true);
+        m_ColorShowcaseObjects[CurrentColorIndex].SetActive(true);
     }
 
-    public void ChangeColorLeft(InputAction.CallbackContext _context)
+    public void ChangeColorLeft(InputAction.CallbackContext context)
     {
-
-        if (_context.performed)
+        if (context.performed)
         {
-            m_CurrentColorIndex--;
-            if (m_CurrentColorIndex < 0)
-            {
-                m_CurrentColorIndex = m_Colors.Count - 1;
-            }
-            SetColors();
+            CurrentColorIndex--;
         }
     }
-    public void ChangeColorRight(InputAction.CallbackContext _context)
+
+    public void ChangeColorRight(InputAction.CallbackContext context)
     {
-        if (_context.performed)
+        if (context.performed)
         {
-            m_CurrentColorIndex++;
-            if (m_CurrentColorIndex >= m_Colors.Count)
-            {
-                m_CurrentColorIndex = 0;
-            }
-            SetColors();
+            CurrentColorIndex++;
         }
     }
 
@@ -67,14 +66,14 @@ public class ShowcaseColorChanger : MonoBehaviour
     {
         GameObject[] changeableObjects = GameObject.FindGameObjectsWithTag("ChangeableColors");
 
-        foreach (GameObject _obj in changeableObjects)
+        foreach (GameObject obj in changeableObjects)
         {
-            Renderer _renderer = _obj.GetComponent<Renderer>();
-            _renderer.material = m_Colors[m_CurrentColorIndex];
+            Renderer renderer = obj.GetComponent<Renderer>();
+            renderer.material = m_ColorMaterials[CurrentColorIndex];
         }
 
-        m_ShowColorObjects[m_pastColorIndex].SetActive(false);
-        m_ShowColorObjects[m_CurrentColorIndex].SetActive(true);
-        m_pastColorIndex = m_CurrentColorIndex;
+        m_ColorShowcaseObjects[m_PreviousColorIndex].SetActive(false);
+        m_ColorShowcaseObjects[CurrentColorIndex].SetActive(true);
+        m_PreviousColorIndex = CurrentColorIndex;
     }
 }

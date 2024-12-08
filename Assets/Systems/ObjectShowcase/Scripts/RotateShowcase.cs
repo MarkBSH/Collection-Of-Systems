@@ -2,10 +2,25 @@ using UnityEngine;
 
 public class RotateShowcase : MonoBehaviour
 {
-    private float m_RotationSpeed = 0.6f;
+    [SerializeField]
+    private float rotationSpeed = 0.6f;
+    private bool isRotating = true;
 
     private void FixedUpdate()
     {
-        transform.Rotate(Vector3.up, m_RotationSpeed);
+        if (isRotating)
+        {
+            transform.Rotate(Vector3.up, rotationSpeed);
+        }
+    }
+
+    public void StartRotation()
+    {
+        isRotating = true;
+    }
+
+    public void StopRotation()
+    {
+        isRotating = false;
     }
 }
