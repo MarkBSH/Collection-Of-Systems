@@ -6,6 +6,8 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
+    #region Singleton
+
     private static InventoryManager m_Instance;
     public static InventoryManager Instance
     {
@@ -25,11 +27,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private List<Item> m_Items = new();
-    [SerializeField] private List<int> m_ItemAmounts = new();
-    private GameObject m_InventoryUI;
-    private List<Image> m_InventoryImage = new();
-    private List<TextMeshProUGUI> m_InventoryText = new();
+    #endregion
+
+    #region Unity Methods
 
     private void Awake()
     {
@@ -42,30 +42,25 @@ public class InventoryManager : MonoBehaviour
         UpdateInventoryUI();
     }
 
-    private void InitializeInventoryUI()
-    {
-        m_InventoryUI = GameObject.Find("InventoryUI");
-        if (m_InventoryUI != null)
-        {
-            for (int i = 0; i < m_InventoryUI.transform.childCount; i++)
-            {
-                Transform child = m_InventoryUI.transform.GetChild(i);
-                m_InventoryImage.Add(child.GetChild(0).GetComponent<Image>());
-                m_InventoryText.Add(child.GetChild(1).GetComponent<TextMeshProUGUI>());
-            }
-        }
-        else
-        {
-            Debug.LogWarning("InventoryUI GameObject not found.");
-        }
-    }
+    #endregion
+
+    #region Components
+
+
+
+    #endregion
+
+    #region Inventory
+
+    [SerializeField] private List<Item> m_Items = new();
+    [SerializeField] private List<int> m_ItemAmounts = new();
 
     public void AddItem(Item _item, int _amount)
     {
-        int _index = m_Items.IndexOf(_item);
-        if (_index >= 0)
+        int _Index = m_Items.IndexOf(_item);
+        if (_Index >= 0)
         {
-            m_ItemAmounts[_index] += _amount;
+            m_ItemAmounts[_Index] += _amount;
         }
         else
         {
@@ -77,33 +72,56 @@ public class InventoryManager : MonoBehaviour
 
     public void RemoveItem(Item _item, int _amount)
     {
-        int _index = m_Items.IndexOf(_item);
-        if (_index >= 0)
+        int _Index = m_Items.IndexOf(_item);
+        if (_Index < 0)
         {
-            m_ItemAmounts[_index] -= _amount;
-            if (m_ItemAmounts[_index] <= 0)
-            {
-                m_Items.RemoveAt(_index);
-                m_ItemAmounts.RemoveAt(_index);
-            }
+            DebugWarning("Item not found in inventory.");
+            return;
         }
-        else
+
+        m_ItemAmounts[_Index] -= _amount;
+        if (m_ItemAmounts[_Index] <= 0)
         {
-            Debug.LogWarning("Item not found in inventory.");
+            m_Items.RemoveAt(_Index);
+            m_ItemAmounts.RemoveAt(_Index);
         }
         UpdateInventoryUI();
     }
 
     public bool HasItem(Item _item, int _amount)
     {
-        int _index = m_Items.IndexOf(_item);
-        return _index >= 0 && m_ItemAmounts[_index] >= _amount;
+        int _Index = m_Items.IndexOf(_item);
+        return _Index >= 0 && m_ItemAmounts[_Index] >= _amount;
     }
 
     public int GetItemAmount(Item _item)
     {
-        int _index = m_Items.IndexOf(_item);
-        return _index >= 0 ? m_ItemAmounts[_index] : 0;
+        int _Index = m_Items.IndexOf(_item);
+        return _Index >= 0 ? m_ItemAmounts[_Index] : 0;
+    }
+
+    #endregion
+
+    #region InventoryUI
+
+    private GameObject m_InventoryUI;
+    private List<Image> m_InventoryImage = new();
+    private List<TextMeshProUGUI> m_InventoryText = new();
+
+    private void InitializeInventoryUI()
+    {
+        m_InventoryUI = GameObject.Find("InventoryUI");
+        if (m_InventoryUI == null)
+        {
+            DebugWarning("InventoryUI GameObject not found.");
+            return;
+        }
+        for (int i = 0; i < m_InventoryUI.transform.childCount; i++)
+        {
+            Transform child = m_InventoryUI.transform.GetChild(i);
+            m_InventoryImage.Add(child.GetChild(0).GetComponent<Image>());
+            m_InventoryText.Add(child.GetChild(1).GetComponent<TextMeshProUGUI>());
+        }
     }
 
     public void UpdateInventoryUI()
@@ -124,4 +142,15 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    #region Debugging
+
+    private void DebugWarning(string _warning)
+    {
+        Debug.LogWarning("Warning: " + _warning);
+    }
+
+    #endregion
 }
