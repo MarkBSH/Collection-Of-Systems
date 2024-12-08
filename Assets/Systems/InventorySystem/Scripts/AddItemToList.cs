@@ -2,17 +2,41 @@ using UnityEngine;
 
 public class AddItemToList : MonoBehaviour
 {
-    [SerializeField] private Item m_item;
+    #region Unity Methods
+
+
+
+    #endregion
+
+    #region Components
+
+
+
+    #endregion
+
+    #region ItemAdder
+
+    [SerializeField] private Item m_Item;
 
     public void AddItem()
     {
-        if (m_item == null)
+        if (m_Item == null)
         {
-            Debug.LogWarning("Item is null, cannot add to inventory.");
+            DebugWarning("Item is null, cannot add to inventory.");
             return;
         }
 
-        Debug.Log($"Adding item to inventory: {m_item.ItemName}");
-        InventoryManager.Instance.AddItem(m_item, 1);
+        InventoryManager.Instance.AddItem(m_Item, 1);
     }
+
+    #endregion
+
+    #region Debugging
+
+    private void DebugWarning(string _warning)
+    {
+        Debug.LogWarning("Warning: " + _warning);
+    }
+
+    #endregion
 }
