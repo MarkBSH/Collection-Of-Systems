@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class ShowcaseObjectChanger : MonoBehaviour
 {
+    #region Singleton
+
     private static ShowcaseObjectChanger m_Instance;
     public static ShowcaseObjectChanger Instance
     {
@@ -22,13 +24,29 @@ public class ShowcaseObjectChanger : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Unity Methods
+
+    private void Start()
+    {
+        GetSpawnPoint();
+        StartShowcaseObject();
+    }
+
+    #endregion
+
+    #region Components
+
+
+
+    #endregion
+
+    #region ObjectChanger
+
     [SerializeField] private List<GameObject> m_Objects = new();
     [SerializeField] private List<GameObject> m_ShowObjectObjects = new();
     private int m_CurrentObjectIndex = 0;
-    private int m_pastObjectIndex = 0;
-    private Transform m_SpawnPoint;
-    private GameObject m_SpawnedObject;
-
     private int CurrentObjectIndex
     {
         get => m_CurrentObjectIndex;
@@ -38,16 +56,29 @@ public class ShowcaseObjectChanger : MonoBehaviour
             SetObjects();
         }
     }
+    private int m_PastObjectIndex = 0;
+    private Transform m_SpawnPoint;
+    private GameObject m_SpawnedObject;
 
-    private void Awake()
+    private void GetSpawnPoint()
     {
-        m_SpawnPoint = GameObject.Find("SpawnPoint").transform;
+        GameObject spawnPointObject = GameObject.Find("SpawnPoint");
+        if (spawnPointObject != null)
+        {
+            m_SpawnPoint = spawnPointObject.transform;
+        }
+        else
+        {
+            DebugWarning("SpawnPoint not found.");
+        }
+    }
 
+    private void StartShowcaseObject()
+    {
         foreach (GameObject _obj in m_ShowObjectObjects)
         {
             _obj.SetActive(false);
         }
-
         SetObjects();
     }
 
@@ -74,8 +105,19 @@ public class ShowcaseObjectChanger : MonoBehaviour
         m_SpawnedObject = Instantiate(m_Objects[m_CurrentObjectIndex], m_SpawnPoint);
         ShowcaseColorChanger.Instance.SetColors();
 
-        m_ShowObjectObjects[m_pastObjectIndex].SetActive(false);
+        m_ShowObjectObjects[m_PastObjectIndex].SetActive(false);
         m_ShowObjectObjects[m_CurrentObjectIndex].SetActive(true);
-        m_pastObjectIndex = m_CurrentObjectIndex;
+        m_PastObjectIndex = m_CurrentObjectIndex;
     }
+
+    #endregion
+
+    #region Debugging
+
+    private void DebugWarning(string _warning)
+    {
+        Debug.LogWarning("Warning: " + _warning);
+    }
+
+    #endregion
 }
