@@ -1,57 +1,47 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-enum Direction
-{
-    None,
-    forward,
-    back,
-    Left,
-    Right
-}
-
 public class WASDGridBasedMovement : MonoBehaviour
 {
-    private Direction m_Direction;
-    public float m_MoveTime = 0.5f;
-    private float m_MoveTimer;
-    private Vector3 m_TargetPosition;
+    #region Unity Methods
 
     private void Start()
     {
-        m_TargetPosition = transform.position;
+        SetStartPosition();
     }
 
     private void Update()
     {
-        Debug.Log(m_MoveTimer / m_MoveTime);
-        if (m_Direction != Direction.None)
-        {
-            Vector3 moveDirection = Vector3.zero;
-            switch (m_Direction)
-            {
-                case Direction.forward:
-                    moveDirection = Vector3.forward;
-                    break;
-                case Direction.back:
-                    moveDirection = Vector3.back;
-                    break;
-                case Direction.Left:
-                    moveDirection = Vector3.left;
-                    break;
-                case Direction.Right:
-                    moveDirection = Vector3.right;
-                    break;
-            }
-            m_MoveTimer += Time.deltaTime;
-            transform.position = Vector3.Lerp(transform.position, m_TargetPosition, m_MoveTimer / m_MoveTime);
-            if (m_MoveTimer >= m_MoveTime)
-            {
-                m_MoveTimer = 0;
-                m_Direction = Direction.None;
-                transform.position = m_TargetPosition;
-            }
-        }
+        MoveCharacter();
+    }
+
+    #endregion
+
+    #region Components
+
+
+
+    #endregion
+
+    #region Movement
+
+    enum Direction
+    {
+        None,
+        forward,
+        back,
+        Left,
+        Right
+    }
+    private Direction m_Direction;
+    private Vector3 m_TargetPosition;
+
+    public float m_MoveTime = 0.5f;
+    private float m_MoveTimer;
+
+    private void SetStartPosition()
+    {
+        m_TargetPosition = transform.position;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -80,5 +70,35 @@ public class WASDGridBasedMovement : MonoBehaviour
                 m_TargetPosition += Vector3.back;
             }
         }
+        else
+        {
+            DebugWarning("Character is already moving");
+        }
     }
+
+    private void MoveCharacter()
+    {
+        if (m_Direction != Direction.None)
+        {
+            m_MoveTimer += Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, m_TargetPosition, m_MoveTimer / m_MoveTime);
+            if (m_MoveTimer >= m_MoveTime)
+            {
+                m_MoveTimer = 0;
+                m_Direction = Direction.None;
+                transform.position = m_TargetPosition;
+            }
+        }
+    }
+
+    #endregion
+
+    #region Debugging
+
+    private void DebugWarning(string _warning)
+    {
+        Debug.LogWarning("Warning: " + _warning);
+    }
+
+    #endregion
 }
