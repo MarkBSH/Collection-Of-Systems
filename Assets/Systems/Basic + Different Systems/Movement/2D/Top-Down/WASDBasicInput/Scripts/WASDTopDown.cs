@@ -40,6 +40,10 @@ public class WASDTopDown : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         m_MoveInput = context.ReadValue<Vector2>();
+        if (m_MoveInput.magnitude > 1)
+        {
+            m_MoveInput.Normalize();
+        }
     }
 
     private void MoveCharacter()
