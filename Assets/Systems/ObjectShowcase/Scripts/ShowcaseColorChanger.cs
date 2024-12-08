@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class ShowcaseColorChanger : MonoBehaviour
 {
+    #region Singleton
+
     private static ShowcaseColorChanger m_Instance;
     public static ShowcaseColorChanger Instance
     {
@@ -23,11 +25,29 @@ public class ShowcaseColorChanger : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Unity Methods
+
+    private void Start()
+    {
+        StartShowcaseObject();
+    }
+
+    #endregion
+
+    #region Components
+
+
+
+    #endregion
+
+    #region ColorChanger
+
     [SerializeField] private List<Material> m_ColorMaterials = new();
     [SerializeField] private List<GameObject> m_ColorShowcaseObjects = new();
     private int m_CurrentObjectIndex = 0;
     private int m_PreviousColorIndex = 0;
-
     private int CurrentColorIndex
     {
         get => m_CurrentObjectIndex;
@@ -38,7 +58,7 @@ public class ShowcaseColorChanger : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void StartShowcaseObject()
     {
         foreach (GameObject obj in m_ColorShowcaseObjects)
         {
@@ -77,4 +97,15 @@ public class ShowcaseColorChanger : MonoBehaviour
         m_ColorShowcaseObjects[CurrentColorIndex].SetActive(true);
         m_PreviousColorIndex = CurrentColorIndex;
     }
+
+    #endregion
+
+    #region Debugging
+
+    private void DebugWarning(string _warning)
+    {
+        Debug.LogWarning("Warning: " + _warning);
+    }
+
+    #endregion
 }
