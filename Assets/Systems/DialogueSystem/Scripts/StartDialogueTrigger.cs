@@ -8,7 +8,15 @@ public class StartDialogueTrigger : MonoBehaviour
     {
         if (_other.CompareTag("Player"))
         {
-            DialogueManager.Instance.StartDialogue(m_DialogueIndex);
+            var dialogueManager = DialogueManager.Instance;
+            if (dialogueManager != null)
+            {
+                dialogueManager.StartDialogue(m_DialogueIndex);
+            }
+            else
+            {
+                Debug.LogWarning("DialogueManager instance is null.");
+            }
         }
     }
 }

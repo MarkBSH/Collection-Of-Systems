@@ -32,18 +32,22 @@ public class DialogueManager : MonoBehaviour
     private Image m_SpriteArea;
     private AudioSource m_AudioManager;
     private bool m_IsWaitingForInput;
-
     private float m_normalPlayerSpeed = 5f;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        InitializeDialogueComponents();
+        m_DialogueBox.SetActive(false);
+    }
+
+    private void InitializeDialogueComponents()
+    {
         m_DialogueBox = GameObject.Find("DialogueBox");
         m_TextArea = GameObject.Find("TextArea").GetComponent<TextMeshProUGUI>();
         m_NameArea = GameObject.Find("NameArea").GetComponent<TextMeshProUGUI>();
         m_SpriteArea = GameObject.Find("SpriteArea").GetComponent<Image>();
         m_AudioManager = GetComponent<AudioSource>();
-        m_DialogueBox.SetActive(false);
     }
 
     private void Update()
@@ -66,14 +70,15 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DialogueCoroutine(int _dialogueIndex)
     {
-        for (int i = 0; i < m_Dialogues[_dialogueIndex].m_Sentence.Count; i++)
+        var dialogue = m_Dialogues[_dialogueIndex];
+        for (int i = 0; i < dialogue.m_Sentence.Count; i++)
         {
             m_TextArea.text = "";
-            m_NameArea.text = m_Dialogues[_dialogueIndex].m_Name[i];
-            m_SpriteArea.sprite = m_Dialogues[_dialogueIndex].m_Sprite[i];
-            m_AudioManager.PlayOneShot(m_Dialogues[_dialogueIndex].m_AudioClip[i]);
+            m_NameArea.text = dialogue.m_Name[i];
+            m_SpriteArea.sprite = dialogue.m_Sprite[i];
+            m_AudioManager.PlayOneShot(dialogue.m_AudioClip[i]);
 
-            foreach (char letter in m_Dialogues[_dialogueIndex].m_Sentence[i].ToCharArray())
+            foreach (char letter in dialogue.m_Sentence[i].ToCharArray())
             {
                 m_TextArea.text += letter;
                 yield return new WaitForSeconds(0.05f); // Adjust the speed of the text display here
@@ -91,7 +96,6 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         BasicPlayerMovement.m_Speed = m_normalPlayerSpeed;
-
         m_DialogueBox.SetActive(false);
     }
 }

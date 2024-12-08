@@ -5,7 +5,7 @@ public class BasicPlayerMovement : MonoBehaviour
 {
     public static float m_Speed = 5f;
     private Rigidbody m_Rigidbody;
-    private Vector2 m_Input;
+    private Vector3 m_Input;
 
     private void Awake()
     {
@@ -14,12 +14,13 @@ public class BasicPlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext _context)
     {
-        m_Input = _context.ReadValue<Vector2>();
+        Vector2 input = _context.ReadValue<Vector2>();
+        m_Input = new Vector3(input.x, 0, input.y);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Vector3 _movement = new Vector3(m_Input.x, 0, m_Input.y) * (Time.deltaTime * m_Speed);
+        Vector3 _movement = m_Input * (Time.fixedDeltaTime * m_Speed);
         m_Rigidbody.MovePosition(transform.position + _movement);
     }
 }

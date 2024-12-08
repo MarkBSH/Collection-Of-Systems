@@ -26,6 +26,9 @@ public class ShowcaseObjectChanger : MonoBehaviour
     [SerializeField] private List<GameObject> m_ShowObjectObjects = new();
     private int m_CurrentObjectIndex = 0;
     private int m_pastObjectIndex = 0;
+    private Transform m_SpawnPoint;
+    private GameObject m_SpawnedObject;
+
     private int CurrentObjectIndex
     {
         get => m_CurrentObjectIndex;
@@ -35,8 +38,6 @@ public class ShowcaseObjectChanger : MonoBehaviour
             SetObjects();
         }
     }
-    private Transform m_SpawnPoint;
-    private GameObject m_SpawnedObject;
 
     private void Awake()
     {

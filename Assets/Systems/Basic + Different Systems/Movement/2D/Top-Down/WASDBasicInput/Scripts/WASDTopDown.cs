@@ -3,22 +3,23 @@ using UnityEngine.InputSystem;
 
 public class WASDTopDown : MonoBehaviour
 {
-    private Rigidbody m_rb;
-    public float speed = 5f;
-    private Vector2 m_move;
+    private Rigidbody m_RB;
+    public float m_Speed = 5f;
+    private Vector2 m_MoveInput;
 
     private void Start()
     {
-        m_rb = GetComponent<Rigidbody>();
+        m_RB = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        m_rb.linearVelocity = new Vector3(m_move.x, 0, m_move.y) * speed;
+        m_RB.linearVelocity = m_MoveInput * m_Speed;
+
     }
 
-    public void OnMove(InputAction.CallbackContext _context)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        m_move = _context.ReadValue<Vector2>();
+        m_MoveInput = context.ReadValue<Vector2>();
     }
 }

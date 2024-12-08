@@ -27,6 +27,7 @@ public class ShowcaseColorChanger : MonoBehaviour
     [SerializeField] private List<GameObject> m_ColorShowcaseObjects = new();
     private int m_CurrentObjectIndex = 0;
     private int m_PreviousColorIndex = 0;
+
     private int CurrentColorIndex
     {
         get => m_CurrentObjectIndex;

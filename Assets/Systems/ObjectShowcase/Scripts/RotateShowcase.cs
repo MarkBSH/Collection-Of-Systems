@@ -2,25 +2,19 @@ using UnityEngine;
 
 public class RotateShowcase : MonoBehaviour
 {
-    [SerializeField]
-    private float rotationSpeed = 0.6f;
+    [SerializeField] private float m_RotationSpeed = 0.6f;
     private bool isRotating = true;
 
     private void FixedUpdate()
     {
         if (isRotating)
         {
-            transform.Rotate(Vector3.up, rotationSpeed);
+            transform.Rotate(Vector3.up, m_RotationSpeed, Space.Self);
         }
     }
 
-    public void StartRotation()
+    public void ToggleRotationState()
     {
-        isRotating = true;
-    }
-
-    public void StopRotation()
-    {
-        isRotating = false;
+        isRotating = !isRotating;
     }
 }

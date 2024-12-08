@@ -12,7 +12,7 @@ public class MouseInputMovement : MonoBehaviour
     private void Start()
     {
         m_agent = GetComponent<NavMeshAgent>();
-        m_agent.speed = m_speed; // Set the agent's speed
+        m_agent.speed = m_speed;
         m_path = new NavMeshPath();
         m_mainCamera = Camera.main;
     }
@@ -22,8 +22,9 @@ public class MouseInputMovement : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Ray _ray = m_mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit _hit;
 
-            if (Physics.Raycast(_ray, out RaycastHit _hit))
+            if (Physics.Raycast(_ray, out _hit))
             {
                 NavMesh.CalculatePath(transform.position, _hit.point, NavMesh.AllAreas, m_path);
 

@@ -16,10 +16,17 @@ public class Item : ScriptableObject
     [SerializeField] private Sprite m_ItemSprite;
     [SerializeField] private int m_ItemValue;
     [SerializeField] private ItemType m_ItemType;
+    [SerializeField] private string m_ItemDescription;
 
     public int ItemID => m_ItemID;
     public string ItemName => m_ItemName;
     public Sprite ItemSprite => m_ItemSprite;
     public int ItemValue => m_ItemValue;
     public ItemType ItemType => m_ItemType;
+    public string ItemDescription => m_ItemDescription;
+
+    public string GetItemDetails()
+    {
+        return $"ID: {m_ItemID}\nName: {m_ItemName}\nDescription: {m_ItemDescription}\nValue: {m_ItemValue}\nType: {m_ItemType}";
+    }
 }

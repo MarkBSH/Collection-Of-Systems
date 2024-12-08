@@ -20,10 +20,20 @@ public class SideScrollingMovement : MonoBehaviour
 
     private void Update()
     {
-        isGrounded = Physics.OverlapSphere(m_groundCheck.position, m_groundCheckRadius, m_groundLayer).Length > 0;
+        CheckGroundStatus();
     }
 
     private void FixedUpdate()
+    {
+        MoveCharacter();
+    }
+
+    private void CheckGroundStatus()
+    {
+        isGrounded = Physics.OverlapSphere(m_groundCheck.position, m_groundCheckRadius, m_groundLayer).Length > 0;
+    }
+
+    private void MoveCharacter()
     {
         m_rb.linearVelocity = new Vector2(m_move.x * m_speed, m_rb.linearVelocity.y);
     }

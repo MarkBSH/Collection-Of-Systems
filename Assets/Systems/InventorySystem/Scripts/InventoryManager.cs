@@ -38,20 +38,33 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        m_InventoryUI = GameObject.Find("InventoryUI");
-        for (int i = 0; i < m_InventoryUI.transform.childCount; i++)
-        {
-            m_InventoryImage.Add(m_InventoryUI.transform.GetChild(i).GetChild(0).GetComponent<Image>());
-            m_InventoryText.Add(m_InventoryUI.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>());
-        }
+        InitializeInventoryUI();
         UpdateInventoryUI();
+    }
+
+    private void InitializeInventoryUI()
+    {
+        m_InventoryUI = GameObject.Find("InventoryUI");
+        if (m_InventoryUI != null)
+        {
+            for (int i = 0; i < m_InventoryUI.transform.childCount; i++)
+            {
+                Transform child = m_InventoryUI.transform.GetChild(i);
+                m_InventoryImage.Add(child.GetChild(0).GetComponent<Image>());
+                m_InventoryText.Add(child.GetChild(1).GetComponent<TextMeshProUGUI>());
+            }
+        }
+        else
+        {
+            Debug.LogWarning("InventoryUI GameObject not found.");
+        }
     }
 
     public void AddItem(Item _item, int _amount)
     {
-        if (m_Items.Contains(_item))
+        int _index = m_Items.IndexOf(_item);
+        if (_index >= 0)
         {
-            int _index = m_Items.IndexOf(_item);
             m_ItemAmounts[_index] += _amount;
         }
         else
@@ -64,9 +77,9 @@ public class InventoryManager : MonoBehaviour
 
     public void RemoveItem(Item _item, int _amount)
     {
-        if (m_Items.Contains(_item))
+        int _index = m_Items.IndexOf(_item);
+        if (_index >= 0)
         {
-            int _index = m_Items.IndexOf(_item);
             m_ItemAmounts[_index] -= _amount;
             if (m_ItemAmounts[_index] <= 0)
             {
@@ -83,22 +96,14 @@ public class InventoryManager : MonoBehaviour
 
     public bool HasItem(Item _item, int _amount)
     {
-        if (m_Items.Contains(_item))
-        {
-            int _index = m_Items.IndexOf(_item);
-            return m_ItemAmounts[_index] >= _amount;
-        }
-        return false;
+        int _index = m_Items.IndexOf(_item);
+        return _index >= 0 && m_ItemAmounts[_index] >= _amount;
     }
 
     public int GetItemAmount(Item _item)
     {
-        if (m_Items.Contains(_item))
-        {
-            int _index = m_Items.IndexOf(_item);
-            return m_ItemAmounts[_index];
-        }
-        return 0;
+        int _index = m_Items.IndexOf(_item);
+        return _index >= 0 ? m_ItemAmounts[_index] : 0;
     }
 
     public void UpdateInventoryUI()
