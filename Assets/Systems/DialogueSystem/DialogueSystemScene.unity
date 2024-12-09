@@ -1183,7 +1183,6 @@ GameObject:
   - component: {fileID: 1224576372}
   - component: {fileID: 1224576371}
   - component: {fileID: 1224576370}
-  - component: {fileID: 1224576376}
   - component: {fileID: 1224576375}
   m_Layer: 0
   m_Name: Player
@@ -1353,7 +1352,7 @@ MonoBehaviour:
     m_ActionName: 'ObjectShowcase/ChangeObjectDown[/Keyboard/s]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1224576376}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BasicPlayerMovement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -1367,23 +1366,19 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9b1c1897-f44c-43b5-a24f-e551be419df1
     m_ActionName: 'BasicPlayerMovement/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 708190a4-4dbf-4e16-836d-bf201acb5934
+    m_ActionName: 'PlayerMovement/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9d2e620b-0c51-48c8-9233-56cad248c9cf
+    m_ActionName: 'PlayerMovement/Crouch[/Keyboard/leftCtrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: BasicPlayerMovement
+  m_DefaultActionMap: ObjectShowcase
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1224576376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224576369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3780379f352c4bd46a17ac6cb889c9f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1229148853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,17 +1516,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1579028044}
-  - {fileID: 1229148857}
-  - {fileID: 1924878744}
-  - {fileID: 727106744}
-  - {fileID: 892620750}
-  - {fileID: 733093420}
-  - {fileID: 683391989}
   - {fileID: 1081253449}
+  - {fileID: 683391989}
   - {fileID: 1659457111}
-  - {fileID: 1413463599}
   - {fileID: 1866529844}
+  - {fileID: 1413463599}
+  - {fileID: 727106744}
+  - {fileID: 733093420}
+  - {fileID: 1579028044}
+  - {fileID: 892620750}
+  - {fileID: 1924878744}
+  - {fileID: 1229148857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308427952
@@ -2374,9 +2369,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1562561747}
   - {fileID: 1794435088}
   - {fileID: 1708999672}
+  - {fileID: 1562561747}
   m_Father: {fileID: 1065447259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2816,8 +2811,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1308427954}
   - {fileID: 1131418207}
-  - {fileID: 1043786387}
+  - {fileID: 1224576374}
   - {fileID: 1065447259}
+  - {fileID: 1043786387}
   - {fileID: 191332574}
   - {fileID: 1232070342}
-  - {fileID: 1224576374}
