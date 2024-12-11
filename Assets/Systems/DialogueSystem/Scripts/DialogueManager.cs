@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
-    #region DialogueInput
+    #region Dialogue Input
 
     private bool m_IsWaitingForInput;
 
