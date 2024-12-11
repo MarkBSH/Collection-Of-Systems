@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class SideScrollingCam : MonoBehaviour
+public class TopDownFollowPlayer : MonoBehaviour
 {
     #region Singleton
 
-    private static SideScrollingCam m_Instance;
-    public static SideScrollingCam Instance
+    private static TopDownFollowPlayer m_Instance;
+    public static TopDownFollowPlayer Instance
     {
         get
         {
             if (m_Instance == null)
             {
-                m_Instance = FindFirstObjectByType<SideScrollingCam>();
+                m_Instance = FindFirstObjectByType<TopDownFollowPlayer>();
                 if (m_Instance == null)
                 {
                     GameObject _obj = new();
-                    _obj.name = typeof(SideScrollingCam).Name;
-                    m_Instance = _obj.AddComponent<SideScrollingCam>();
+                    _obj.name = typeof(TopDownFollowPlayer).Name;
+                    m_Instance = _obj.AddComponent<TopDownFollowPlayer>();
                 }
             }
             return m_Instance;
@@ -30,6 +30,7 @@ public class SideScrollingCam : MonoBehaviour
     private void Start()
     {
         GetPlayer();
+        TurnCameraDown();
     }
 
     private void Update()
@@ -57,6 +58,11 @@ public class SideScrollingCam : MonoBehaviour
     #region Camera
 
     [SerializeField] private Vector3 m_Offset;
+
+    private void TurnCameraDown()
+    {
+        transform.rotation = Quaternion.Euler(90, 0, 0);
+    }
 
     private void FollowPlayer()
     {

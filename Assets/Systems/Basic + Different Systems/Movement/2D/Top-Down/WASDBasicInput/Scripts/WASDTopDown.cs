@@ -48,7 +48,7 @@ public class WASDTopDown : MonoBehaviour
 
     private void MoveCharacter()
     {
-        m_RB.linearVelocity = m_MoveInput * m_Speed;
+        m_RB.linearVelocity = new Vector3(m_MoveInput.x, 0, m_MoveInput.y) * m_Speed;
     }
 
     #endregion
