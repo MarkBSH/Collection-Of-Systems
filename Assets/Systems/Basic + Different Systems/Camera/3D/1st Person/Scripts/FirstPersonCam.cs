@@ -78,9 +78,9 @@ public class FirstPersonCam : MonoBehaviour
 
     #region Debugging
 
-    private static void DebugWarning(string _message)
+    private static void DebugWarning(string _warning)
     {
-        Debug.LogWarning("Warning: " + _message);
+        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion

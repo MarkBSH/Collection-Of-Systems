@@ -139,9 +139,9 @@ public class MapLikeCamera : MonoBehaviour
 
     #region Debugging
 
-    private void DebugWarning(string _message)
+    private void DebugWarning(string _warning)
     {
-        Debug.LogWarning("Warning: " + _message);
+        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion
