@@ -75,7 +75,13 @@ public class EnemyBase : MonoBehaviour
             }
             else if (m_Distance < m_MinRange)
             {
-                m_NavMeshAgent.SetDestination(transform.position - m_Target.transform.position);
+                Vector3 directionAwayFromTarget = transform.position - m_Target.transform.position;
+                Vector3 newPosition = transform.position + directionAwayFromTarget;
+                m_NavMeshAgent.SetDestination(newPosition);
+            }
+            else
+            {
+                m_NavMeshAgent.SetDestination(transform.position);
             }
         }
     }
