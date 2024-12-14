@@ -1,0 +1,181 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2040042634171737771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7841632105637575255}
+  - component: {fileID: 1297691785278078744}
+  - component: {fileID: 6143099206336345363}
+  - component: {fileID: 4446694749173494785}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7841632105637575255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040042634171737771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297691785278078744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040042634171737771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9321d872d56f84aa8c584bf66b1eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ColorMaterials:
+  - {fileID: 2100000, guid: fd0dcef9af5f99949a19f5ce4bfe34ff, type: 2}
+  - {fileID: 2100000, guid: c30e51e4871592a4383615cb0b20d144, type: 2}
+  - {fileID: 2100000, guid: 8f6e42a138e155844990ba92413d3efd, type: 2}
+  m_ColorShowcaseObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &6143099206336345363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040042634171737771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ac9aa2a98109742823d25c065b21c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Objects:
+  - {fileID: 1571838620928067797, guid: 53c9497a7459b8148b47b6211aef1524, type: 3}
+  - {fileID: 5098767757550891533, guid: 093990a5255b9a54c878575c5b2e41f3, type: 3}
+  m_ShowObjectObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &4446694749173494785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040042634171737771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1297691785278078744}
+        m_TargetAssemblyTypeName: ShowcaseColorChanger, Assembly-CSharp
+        m_MethodName: ChangeColorLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c2d14c78-85e7-4dde-badf-51075a7af3cd
+    m_ActionName: ObjectShowcase/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1297691785278078744}
+        m_TargetAssemblyTypeName: ShowcaseColorChanger, Assembly-CSharp
+        m_MethodName: ChangeColorRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1244d51a-c914-4098-bbf7-825083c5b78b
+    m_ActionName: ObjectShowcase/ChangeColorRight
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6143099206336345363}
+        m_TargetAssemblyTypeName: ShowcaseObjectChanger, Assembly-CSharp
+        m_MethodName: ChangeObjectUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 487708e4-fa02-4f35-85ee-5a8935e9366f
+    m_ActionName: ObjectShowcase/ChangeObjectUp
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6143099206336345363}
+        m_TargetAssemblyTypeName: ShowcaseObjectChanger, Assembly-CSharp
+        m_MethodName: ChangeObjectDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 694c18a6-3084-49ab-b903-f0d39ff38382
+    m_ActionName: ObjectShowcase/ChangeObjectDown
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9b1c1897-f44c-43b5-a24f-e551be419df1
+    m_ActionName: 'PlayerMovement/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 708190a4-4dbf-4e16-836d-bf201acb5934
+    m_ActionName: 'PlayerMovement/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9d2e620b-0c51-48c8-9233-56cad248c9cf
+    m_ActionName: 'PlayerMovement/Crouch[/Keyboard/leftCtrl]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ObjectShowcase
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
