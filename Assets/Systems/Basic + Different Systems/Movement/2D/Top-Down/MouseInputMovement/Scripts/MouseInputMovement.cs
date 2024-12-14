@@ -21,12 +21,12 @@ public class MouseInputMovement : MonoBehaviour
 
     #region Components
 
-    private NavMeshAgent m_agent;
+    private NavMeshAgent m_Agent;
 
     private void GetComponents()
     {
-        m_agent = GetComponent<NavMeshAgent>();
-        if (m_agent == null)
+        m_Agent = GetComponent<NavMeshAgent>();
+        if (m_Agent == null)
         {
             DebugWarning("No NavMeshAgent component found. Please add a NavMeshAgent component to the GameObject");
         }
@@ -76,7 +76,7 @@ public class MouseInputMovement : MonoBehaviour
 
     private void SetSpeed()
     {
-        m_agent.speed = m_Speed;
+        m_Agent.speed = m_Speed;
     }
 
     #endregion
@@ -104,7 +104,7 @@ public class MouseInputMovement : MonoBehaviour
     private void SetDestination(RaycastHit _hit)
     {
         m_Target = _hit.point;
-        m_agent.SetDestination(m_Target);
+        m_Agent.SetDestination(m_Target);
     }
 
     #endregion
