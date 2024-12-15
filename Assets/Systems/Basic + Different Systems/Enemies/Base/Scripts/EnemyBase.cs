@@ -146,8 +146,11 @@ public class EnemyBase : MonoBehaviour
         m_AttackTimer += Time.deltaTime;
         if (m_AttackTimer >= m_AttackSpeed)
         {
-            m_AttackTimer = 0;
-            Shoot();
+            if (m_Distance > m_MaxRange && m_Distance < m_MinRange)
+            {
+                m_AttackTimer = 0;
+                Shoot();
+            }
         }
     }
 
