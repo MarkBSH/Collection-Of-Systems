@@ -26,6 +26,7 @@ public class EnemyBase : MonoBehaviour
     #region Components
 
     private NavMeshAgent m_NavMeshAgent;
+    private Animator m_Animator;
 
     private void GetComponents()
     {
@@ -33,6 +34,11 @@ public class EnemyBase : MonoBehaviour
         if (m_NavMeshAgent == null)
         {
             DebugWarning("NavMeshAgent component is null.");
+        }
+        m_Animator = GetComponent<Animator>();
+        if (m_Animator == null)
+        {
+            DebugWarning("Animator component is null.");
         }
     }
 
@@ -67,6 +73,7 @@ public class EnemyBase : MonoBehaviour
 
     private void GoToTarget()
     {
+        IsWalking();
         if (CalculatePath())
         {
             if (m_Distance > m_MaxRange)
@@ -156,7 +163,29 @@ public class EnemyBase : MonoBehaviour
 
     private void Shoot()
     {
+        IsAttacking();
         Instantiate(m_Projectile, transform.position, Quaternion.identity);
+    }
+
+    #endregion
+
+    #region Animation
+
+    private void IsWalking()
+    {
+        if (m_NavMeshAgent.velocity.magnitude > 0)
+        {
+            m_Animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            m_Animator.SetBool("IsWalking", false);
+        }
+    }
+
+    private void IsAttacking()
+    {
+        m_Animator.SetTrigger("IsAttacking");
     }
 
     #endregion
