@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 3
-  m_MaxRange: 2
-  m_MinRange: 1
+  m_MaxRange: 4
+  m_MinRange: 2
   m_MaxHealth: 100
   m_Projectile: {fileID: 5838617450383037933, guid: b24415842af74b24da43de4568df431d, type: 3}
   m_AttackSpeed: 2
@@ -131,8 +131,29 @@ PrefabInstance:
     - {fileID: 7836813114738109634, guid: a0e9d983d6dfa4f4da5578ed51a1d6ee, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3036284069860919644, guid: a0e9d983d6dfa4f4da5578ed51a1d6ee, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5493116669475931620}
   m_SourcePrefab: {fileID: 100100000, guid: a0e9d983d6dfa4f4da5578ed51a1d6ee, type: 3}
+--- !u!1 &7844428490006070404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3036284069860919644, guid: a0e9d983d6dfa4f4da5578ed51a1d6ee, type: 3}
+  m_PrefabInstance: {fileID: 5115542032789065176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5493116669475931620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844428490006070404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c18a0a7bc70787428e08c381e4d958e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Height: 4
 --- !u!4 &9219614517819947042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4110846301334795770, guid: a0e9d983d6dfa4f4da5578ed51a1d6ee, type: 3}

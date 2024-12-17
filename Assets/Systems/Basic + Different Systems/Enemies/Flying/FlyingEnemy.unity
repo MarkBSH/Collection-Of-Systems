@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedVersion: 0
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -789,9 +789,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5493116669475931620, guid: 24c9f6fadf0a82443ba5c8e6541175e2, type: 3}
+      propertyPath: m_Height
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5839814206998761578, guid: 24c9f6fadf0a82443ba5c8e6541175e2, type: 3}
       propertyPath: m_Name
       value: FlyingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980259054958734697, guid: 24c9f6fadf0a82443ba5c8e6541175e2, type: 3}
+      propertyPath: m_MaxRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980259054958734697, guid: 24c9f6fadf0a82443ba5c8e6541175e2, type: 3}
+      propertyPath: m_MinRange
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
