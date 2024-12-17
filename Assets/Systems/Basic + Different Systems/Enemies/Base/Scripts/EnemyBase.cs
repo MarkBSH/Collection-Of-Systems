@@ -73,7 +73,7 @@ public class EnemyBase : MonoBehaviour
 
     private void GoToTarget()
     {
-        IsWalking();
+        // IsWalking();
         if (CalculatePath())
         {
             if (m_Distance > m_MaxRange)
@@ -173,7 +173,7 @@ public class EnemyBase : MonoBehaviour
 
     private void Shoot()
     {
-        IsAttacking();
+        // IsAttacking();
         Instantiate(m_Projectile, transform.position, Quaternion.identity);
     }
 
