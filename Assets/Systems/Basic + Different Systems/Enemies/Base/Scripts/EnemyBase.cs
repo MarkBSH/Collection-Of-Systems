@@ -5,7 +5,7 @@ public class EnemyBase : MonoBehaviour
 {
     #region Unity Methods
 
-    private void Start()
+    protected virtual void Start()
     {
         GetComponents();
         SetTarget();
@@ -14,7 +14,7 @@ public class EnemyBase : MonoBehaviour
         SetHealth();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         GetDistance();
         GoToTarget();
@@ -28,7 +28,7 @@ public class EnemyBase : MonoBehaviour
     private NavMeshAgent m_NavMeshAgent;
     private Animator m_Animator;
 
-    private void GetComponents()
+    protected virtual void GetComponents()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         if (m_NavMeshAgent == null)
@@ -52,7 +52,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float m_MinRange;
     private float m_Distance;
 
-    public void SetTarget()
+    protected virtual void SetTarget()
     {
         m_Target = GameObject.FindGameObjectWithTag("Player");
         if (m_Target == null)
@@ -202,7 +202,7 @@ public class EnemyBase : MonoBehaviour
 
     #region Debugging
 
-    private void DebugWarning(string _warning)
+    protected void DebugWarning(string _warning)
     {
         Debug.LogWarning("Warning: " + _warning);
     }
