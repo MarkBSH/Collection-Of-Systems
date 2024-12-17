@@ -47,7 +47,7 @@ public class EnemyBase : MonoBehaviour
 
     #region Movement
 
-    private GameObject m_Target;
+    [SerializeField] private GameObject m_Target;
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_MaxRange;
     [SerializeField] private float m_MinRange;
@@ -145,7 +145,7 @@ public class EnemyBase : MonoBehaviour
 
     #region Attack
 
-    private GameObject m_AttackPoint;
+    [SerializeField] private GameObject m_AttackPoint;
     [SerializeField] private GameObject m_Projectile;
     [SerializeField] private float m_AttackSpeed;
     private float m_AttackTimer;
@@ -160,7 +160,7 @@ public class EnemyBase : MonoBehaviour
         m_AttackTimer += Time.deltaTime;
         if (m_AttackTimer >= m_AttackSpeed)
         {
-            if (m_Distance > m_MaxRange && m_Distance < m_MinRange)
+            if (m_Distance < m_MaxRange && m_Distance > m_MinRange)
             {
                 m_AttackTimer = 0;
                 Shoot();
