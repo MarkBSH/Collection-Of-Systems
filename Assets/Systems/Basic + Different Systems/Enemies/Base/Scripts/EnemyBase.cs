@@ -8,10 +8,11 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Start()
     {
         GetComponents();
-        SetTarget();
+        SetTarget(GameObject.FindGameObjectWithTag("Player"));
         SetSpeed();
         NewPath();
         SetHealth();
+        SetAttackPoint(transform.Find("AttackPoint").gameObject);
     }
 
     protected virtual void Update()
@@ -52,9 +53,9 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float m_MinRange;
     private float m_Distance;
 
-    protected virtual void SetTarget()
+    protected virtual void SetTarget(GameObject _Target)
     {
-        m_Target = GameObject.FindGameObjectWithTag("Player");
+        m_Target = _Target;
         if (m_Target == null)
         {
             DebugWarning("Player not found.");
@@ -119,7 +120,7 @@ public class EnemyBase : MonoBehaviour
     #region Health
 
     [SerializeField] private float m_MaxHealth = 100f;
-    private float m_CurrentHealth;
+    public float m_CurrentHealth;
 
     private void SetHealth()
     {
@@ -149,16 +150,12 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float m_AttackSpeed;
     private float m_AttackTimer;
 
-    private void AttackPoint()
+    protected virtual void SetAttackPoint(GameObject _attackPoint)
     {
-        m_AttackPoint = transform.Find("AttackPoint").gameObject;
-        if (m_AttackPoint == null)
-        {
-            DebugWarning("Attack point not found.");
-        }
+        m_AttackPoint = _attackPoint;
     }
 
-    private void Attack()
+    protected virtual void Attack()
     {
         m_AttackTimer += Time.deltaTime;
         if (m_AttackTimer >= m_AttackSpeed)
