@@ -144,9 +144,19 @@ public class EnemyBase : MonoBehaviour
 
     #region Attack
 
+    private GameObject m_AttackPoint;
     [SerializeField] private GameObject m_Projectile;
     [SerializeField] private float m_AttackSpeed;
     private float m_AttackTimer;
+
+    private void AttackPoint()
+    {
+        m_AttackPoint = transform.Find("AttackPoint").gameObject;
+        if (m_AttackPoint == null)
+        {
+            DebugWarning("Attack point not found.");
+        }
+    }
 
     private void Attack()
     {
