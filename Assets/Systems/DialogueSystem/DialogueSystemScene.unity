@@ -1179,6 +1179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1224576374}
+  - component: {fileID: 1224576376}
   - component: {fileID: 1224576373}
   - component: {fileID: 1224576372}
   - component: {fileID: 1224576371}
@@ -1352,8 +1353,8 @@ MonoBehaviour:
     m_ActionName: 'ObjectShowcase/ChangeObjectDown[/Keyboard/s]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BasicPlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 1224576376}
+        m_TargetAssemblyTypeName: WASDTopDown, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -1367,7 +1368,19 @@ MonoBehaviour:
     m_ActionId: 9b1c1897-f44c-43b5-a24f-e551be419df1
     m_ActionName: 'BasicPlayerMovement/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1308427953}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: NextSentence
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 708190a4-4dbf-4e16-836d-bf201acb5934
     m_ActionName: 'PlayerMovement/Jump[/Keyboard/space]'
   - m_PersistentCalls:
@@ -1376,9 +1389,22 @@ MonoBehaviour:
     m_ActionName: 'PlayerMovement/Crouch[/Keyboard/leftCtrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: ObjectShowcase
+  m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1224576376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224576369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303066917041a1046b3b07da72bb525a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Speed: 5
 --- !u!1 &1229148853
 GameObject:
   m_ObjectHideFlags: 0

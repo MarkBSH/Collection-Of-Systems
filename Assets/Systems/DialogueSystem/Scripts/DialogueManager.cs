@@ -73,25 +73,9 @@ public class DialogueManager : MonoBehaviour
     private void GetDialogueComponents()
     {
         m_DialogueBox = GameObject.Find("DialogueBox");
-        if (m_DialogueBox == null)
-        {
-            DebugWarning("No DialogueBox found. Please add a DialogueBox to the scene");
-        }
         m_TextArea = GameObject.Find("TextArea").GetComponent<TextMeshProUGUI>();
-        if (m_TextArea == null)
-        {
-            DebugWarning("No TextArea found. Please add a TextArea to the scene");
-        }
         m_NameArea = GameObject.Find("NameArea").GetComponent<TextMeshProUGUI>();
-        if (m_NameArea == null)
-        {
-            DebugWarning("No NameArea found. Please add a NameArea to the scene");
-        }
         m_SpriteArea = GameObject.Find("SpriteArea").GetComponent<Image>();
-        if (m_SpriteArea == null)
-        {
-            DebugWarning("No SpriteArea found. Please add a SpriteArea to the scene");
-        }
     }
 
     private void DisableDialogueBox()
@@ -144,19 +128,6 @@ public class DialogueManager : MonoBehaviour
     private void GetAudioManager()
     {
         m_AudioManager = GetComponent<AudioSource>();
-        if (m_AudioManager == null)
-        {
-            DebugWarning("No AudioSource component found. Please add an AudioSource component to the GameObject");
-        }
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion
