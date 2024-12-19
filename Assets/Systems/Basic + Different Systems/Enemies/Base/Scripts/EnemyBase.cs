@@ -17,9 +17,9 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        GetDistance();
         GoToTarget();
         Attack();
+        CanSeePlayer();
     }
 
     #endregion
@@ -69,7 +69,8 @@ public class EnemyBase : MonoBehaviour
 
     private void GetDistance()
     {
-        m_Distance = Vector3.Distance(transform.position, m_Target.transform.position);
+        m_Distance = m_NavMeshAgent.remainingDistance;
+        Debug.Log("Distance: " + m_Distance);
     }
 
     private void GoToTarget()
@@ -77,6 +78,8 @@ public class EnemyBase : MonoBehaviour
         // IsWalking();
         if (CalculatePath())
         {
+            GetDistance();
+
             if (m_Distance > m_MaxRange)
             {
                 m_NavMeshAgent.SetDestination(m_Target.transform.position);
@@ -158,12 +161,12 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Attack()
     {
         m_AttackTimer += Time.deltaTime;
-        if (m_AttackTimer >= m_AttackSpeed)
+        if (m_AttackTimer >= m_AttackSpeed && m_CanSeeTarget)
         {
             if (m_Distance < m_MaxRange && m_Distance > m_MinRange)
             {
-                m_AttackTimer = 0;
                 Shoot();
+                m_AttackTimer = 0;
             }
         }
     }
@@ -172,6 +175,28 @@ public class EnemyBase : MonoBehaviour
     {
         // IsAttacking();
         Instantiate(m_Projectile, transform.position, Quaternion.identity);
+    }
+
+    #endregion
+
+    #region Line of Sight
+
+    private bool m_CanSeeTarget;
+
+    private void CanSeePlayer()
+    {
+        Vector3 direction = m_Target.transform.position - transform.position;
+        if (Physics.Raycast(transform.position, direction, out RaycastHit hit))
+        {
+            if (hit.collider.gameObject == m_Target)
+            {
+                m_CanSeeTarget = true;
+            }
+            else
+            {
+                m_CanSeeTarget = false;
+            }
+        }
     }
 
     #endregion
