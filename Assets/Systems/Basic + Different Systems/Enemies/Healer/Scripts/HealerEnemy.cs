@@ -45,8 +45,8 @@ public class HealerEnemy : EnemyBase
 
         if (m_LowestHealthEnemy != null)
         {
-            SetTarget(m_LowestHealthEnemy);
-            SetAttackPoint(m_LowestHealthEnemy);
+            SetTarget(m_LowestHealthEnemy.transform);
+            SetAttackPoint(m_LowestHealthEnemy.transform);
         }
 
         yield return new WaitForSeconds(1f);

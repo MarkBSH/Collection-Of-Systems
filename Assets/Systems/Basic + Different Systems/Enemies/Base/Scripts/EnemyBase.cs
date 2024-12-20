@@ -8,11 +8,11 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Start()
     {
         GetComponents();
-        SetTarget(GameObject.FindGameObjectWithTag("Player"));
+        SetTarget(GameObject.FindGameObjectWithTag("Player").transform);
         SetSpeed();
         NewPath();
         SetHealth();
-        SetAttackPoint(transform.Find("AttackPoint").gameObject);
+        SetAttackPoint(transform.Find("AttackPoint"));
     }
 
     protected virtual void Update()
@@ -26,7 +26,7 @@ public class EnemyBase : MonoBehaviour
 
     #region Components
 
-    private NavMeshAgent m_NavMeshAgent;
+    protected NavMeshAgent m_NavMeshAgent;
     private Animator m_Animator;
 
     protected virtual void GetComponents()
@@ -47,13 +47,13 @@ public class EnemyBase : MonoBehaviour
 
     #region Movement
 
-    [SerializeField] private GameObject m_Target;
+    [SerializeField] private Transform m_Target;
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_MaxRange;
     [SerializeField] private float m_MinRange;
     private float m_Distance;
 
-    protected virtual void SetTarget(GameObject _Target)
+    protected virtual void SetTarget(Transform _Target)
     {
         m_Target = _Target;
         if (m_Target == null)
@@ -73,7 +73,7 @@ public class EnemyBase : MonoBehaviour
         Debug.Log("Distance: " + m_Distance);
     }
 
-    private void GoToTarget()
+    protected virtual void GoToTarget()
     {
         // IsWalking();
         if (CalculatePath())
@@ -108,7 +108,7 @@ public class EnemyBase : MonoBehaviour
         m_Path = new NavMeshPath();
     }
 
-    private bool CalculatePath()
+    protected bool CalculatePath()
     {
         NavMesh.CalculatePath(transform.position, m_Target.transform.position, NavMesh.AllAreas, m_Path);
         if (m_Path.status != NavMeshPathStatus.PathComplete)
@@ -148,12 +148,12 @@ public class EnemyBase : MonoBehaviour
 
     #region Attack
 
-    [SerializeField] private GameObject m_AttackPoint;
+    [SerializeField] private Transform m_AttackPoint;
     [SerializeField] private GameObject m_Projectile;
     [SerializeField] private float m_AttackSpeed;
     private float m_AttackTimer;
 
-    protected virtual void SetAttackPoint(GameObject _attackPoint)
+    protected virtual void SetAttackPoint(Transform _attackPoint)
     {
         m_AttackPoint = _attackPoint;
     }
@@ -181,9 +181,9 @@ public class EnemyBase : MonoBehaviour
 
     #region Line of Sight
 
-    private bool m_CanSeeTarget;
+    protected bool m_CanSeeTarget;
 
-    private void CanSeePlayer()
+    protected virtual void CanSeePlayer()
     {
         Vector3 direction = m_Target.transform.position - transform.position;
         if (Physics.Raycast(transform.position, direction, out RaycastHit hit))
