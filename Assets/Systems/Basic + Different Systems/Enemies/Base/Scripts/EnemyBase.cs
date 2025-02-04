@@ -32,15 +32,6 @@ public class EnemyBase : MonoBehaviour
     protected virtual void GetComponents()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
-        if (m_NavMeshAgent == null)
-        {
-            DebugWarning("NavMeshAgent component is null.");
-        }
-        m_Animator = GetComponent<Animator>();
-        if (m_Animator == null)
-        {
-            DebugWarning("Animator component is null.");
-        }
     }
 
     #endregion
@@ -56,10 +47,6 @@ public class EnemyBase : MonoBehaviour
     protected virtual void SetTarget(Transform _Target)
     {
         m_Target = _Target;
-        if (m_Target == null)
-        {
-            DebugWarning("Player not found.");
-        }
     }
 
     private void SetSpeed()
@@ -70,7 +57,6 @@ public class EnemyBase : MonoBehaviour
     private void GetDistance()
     {
         m_Distance = m_NavMeshAgent.remainingDistance;
-        Debug.Log("Distance: " + m_Distance);
     }
 
     protected virtual void GoToTarget()
@@ -113,7 +99,8 @@ public class EnemyBase : MonoBehaviour
         NavMesh.CalculatePath(transform.position, m_Target.transform.position, NavMesh.AllAreas, m_Path);
         if (m_Path.status != NavMeshPathStatus.PathComplete)
         {
-            DebugWarning("Path could not be calculated");
+            Debug.Log(m_Path.status);
+            return false;
         }
         return m_Path.status == NavMeshPathStatus.PathComplete;
     }
@@ -218,15 +205,6 @@ public class EnemyBase : MonoBehaviour
     private void IsAttacking()
     {
         m_Animator.SetTrigger("IsAttacking");
-    }
-
-    #endregion
-
-    #region Debugging
-
-    protected void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion
