@@ -49,19 +49,11 @@ public class ThirdPersonCam : MonoBehaviour
     private void GetPlayer()
     {
         m_Player = transform.parent.parent.gameObject;
-        if (m_Player == null)
-        {
-            DebugWarning("Player not found. Please add a GameObject with the tag 'Player'");
-        }
     }
 
     private void GetCameraParent()
     {
         m_CameraParent = transform.parent.gameObject;
-        if (m_CameraParent == null)
-        {
-            DebugWarning("CameraParent not found");
-        }
     }
 
     #endregion
@@ -84,15 +76,6 @@ public class ThirdPersonCam : MonoBehaviour
         m_AngleY = Mathf.Clamp(m_AngleY, m_MaxCamBottom, m_MaxCamTop);
 
         m_CameraParent.transform.localRotation = Quaternion.Euler(m_AngleY, m_AngleX, 0f);
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion

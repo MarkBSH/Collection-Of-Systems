@@ -29,10 +29,6 @@ public class ThirdPersonMovement : MonoBehaviour
     private void GetComponents()
     {
         m_Controller = GetComponent<CharacterController>();
-        if (m_Controller == null)
-        {
-            DebugWarning("No CharacterController component found. Please add a CharacterController component to the GameObject");
-        }
     }
 
     #endregion
@@ -45,10 +41,6 @@ public class ThirdPersonMovement : MonoBehaviour
     private void GetCamera()
     {
         m_Camera = Camera.main.gameObject;
-        if (m_Camera == null)
-        {
-            DebugWarning("No Camera found. Please add a Camera to the scene");
-        }
     }
 
     private void CameraForward()
@@ -95,10 +87,6 @@ public class ThirdPersonMovement : MonoBehaviour
     private void GetGroundCheck()
     {
         m_GroundCheck = transform.Find("GroundCheck");
-        if (m_GroundCheck == null)
-        {
-            DebugWarning("No GroundCheck found. Please add a GroundCheck to the GameObject");
-        }
     }
 
     public void OnJump(InputAction.CallbackContext _context)
@@ -123,15 +111,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
         m_Velocity.y += m_Gravity * Time.deltaTime;
         m_Controller.Move(m_Velocity * Time.deltaTime);
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion

@@ -664,6 +664,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraParent
       objectReference: {fileID: 0}
+    - target: {fileID: 7153639106541125114, guid: c5f5717e8b4732e4b8e13901fee44fc7, type: 3}
+      propertyPath: m_MaxCamTop
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153639106541125114, guid: c5f5717e8b4732e4b8e13901fee44fc7, type: 3}
+      propertyPath: m_MaxCamBottom
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 7656299573787862537, guid: c5f5717e8b4732e4b8e13901fee44fc7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
