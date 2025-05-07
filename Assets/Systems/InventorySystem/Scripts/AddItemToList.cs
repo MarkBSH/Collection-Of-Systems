@@ -22,20 +22,10 @@ public class AddItemToList : MonoBehaviour
     {
         if (m_Item == null)
         {
-            DebugWarning("Item is null, cannot add to inventory.");
             return;
         }
 
         InventoryManager.Instance.AddItem(m_Item, 1);
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion
