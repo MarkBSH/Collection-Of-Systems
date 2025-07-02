@@ -47,10 +47,6 @@ public class FirstPersonCam : MonoBehaviour
     private void GetPlayer()
     {
         m_Player = transform.parent.gameObject;
-        if (m_Player == null)
-        {
-            DebugWarning("Player not found. Please add a GameObject with the tag 'Player'");
-        }
     }
 
     #endregion
@@ -72,15 +68,6 @@ public class FirstPersonCam : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(m_Angle, 0, 0);
         m_Player.transform.Rotate(Vector3.up * _mouseX);
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private static void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion
