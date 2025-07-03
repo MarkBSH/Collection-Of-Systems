@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596f1b739bc0ce1468ac2cba53ea8827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DialogueIndex: 0
+  m_DialogueIndex: 4
 --- !u!4 &683391989
 Transform:
   m_ObjectHideFlags: 0
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596f1b739bc0ce1468ac2cba53ea8827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DialogueIndex: 1
+  m_DialogueIndex: 3
 --- !u!4 &1081253449
 Transform:
   m_ObjectHideFlags: 0
@@ -1387,6 +1387,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9d2e620b-0c51-48c8-9233-56cad248c9cf
     m_ActionName: 'PlayerMovement/Crouch[/Keyboard/leftCtrl]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1308427953}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: NextSentence
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 747a9363-9176-4e1e-9e68-7570ce4ed35f
+    m_ActionName: PlayerMovement/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -1542,11 +1558,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1081253449}
-  - {fileID: 683391989}
-  - {fileID: 1659457111}
   - {fileID: 1866529844}
   - {fileID: 1413463599}
+  - {fileID: 1659457111}
+  - {fileID: 1081253449}
+  - {fileID: 683391989}
   - {fileID: 727106744}
   - {fileID: 733093420}
   - {fileID: 1579028044}
@@ -1587,11 +1603,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Dialogues:
   - m_Name:
-    - Koos
-    - Mark
+    - NPC
+    - Player
     m_Sentence:
-    - Hoi
-    - Hoi, hoe gaat het
+    - Hi, welcome to DialogueSystem.
+    - Hi, thank you for making this.
     m_Sprite:
     - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
@@ -1599,11 +1615,23 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
     - {fileID: 8300000, guid: 983dfcc1c17ac7844a675d8d1baa50dc, type: 3}
   - m_Name:
-    - Koos
-    - Mark
+    - Player
+    - NPC
     m_Sentence:
-    - Het gaat goed
-    - Dat is goed!
+    - How are you today?
+    - I'm doing great.
+    m_Sprite:
+    - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    m_AudioClip:
+    - {fileID: 8300000, guid: 983dfcc1c17ac7844a675d8d1baa50dc, type: 3}
+    - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
+  - m_Name:
+    - NPC
+    - Player
+    m_Sentence:
+    - How are you today?
+    - Also great!
     m_Sprite:
     - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
@@ -1611,41 +1639,41 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
     - {fileID: 8300000, guid: 983dfcc1c17ac7844a675d8d1baa50dc, type: 3}
   - m_Name:
-    - Koos
-    - Mark
+    - NPC
+    - NPC
+    - NPC
+    - NPC
+    - NPC
+    - Player
     m_Sentence:
-    - En met jouw?
-    - Ook goed
+    - Dialogue 1
+    - Dialogue 2
+    - Dialogue 3
+    - Dialogue 4
+    - Dialogue 5
+    - What?
     m_Sprite:
+    - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     m_AudioClip:
+    - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
+    - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
+    - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
+    - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
     - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
     - {fileID: 8300000, guid: 983dfcc1c17ac7844a675d8d1baa50dc, type: 3}
   - m_Name:
-    - Koos
-    - Mark
+    - NPC
     m_Sentence:
-    - O>O>O>O>
-    - Ik verveel me
+    - ERROR...
     m_Sprite:
     - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     m_AudioClip:
     - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
-    - {fileID: 8300000, guid: 983dfcc1c17ac7844a675d8d1baa50dc, type: 3}
-  - m_Name:
-    - Koos
-    - Mark
-    m_Sentence:
-    - Pech
-    - ;-;
-    m_Sprite:
-    - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    m_AudioClip:
-    - {fileID: 8300000, guid: 2ee3dd8ac71fe234597f7fa9b2e60dc6, type: 3}
-    - {fileID: 8300000, guid: 983dfcc1c17ac7844a675d8d1baa50dc, type: 3}
 --- !u!4 &1308427954
 Transform:
   m_ObjectHideFlags: 0
@@ -1886,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596f1b739bc0ce1468ac2cba53ea8827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DialogueIndex: 3
+  m_DialogueIndex: 1
 --- !u!4 &1413463599
 Transform:
   m_ObjectHideFlags: 0
@@ -2287,7 +2315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596f1b739bc0ce1468ac2cba53ea8827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DialogueIndex: 4
+  m_DialogueIndex: 0
 --- !u!4 &1866529844
 Transform:
   m_ObjectHideFlags: 0

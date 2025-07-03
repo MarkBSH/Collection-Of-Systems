@@ -67,10 +67,6 @@ public class ShowcaseObjectChanger : MonoBehaviour
         {
             m_SpawnPoint = spawnPointObject.transform;
         }
-        else
-        {
-            DebugWarning("SpawnPoint not found.");
-        }
     }
 
     private void StartShowcaseObject()
@@ -108,15 +104,6 @@ public class ShowcaseObjectChanger : MonoBehaviour
         m_ShowObjectObjects[m_PastObjectIndex].SetActive(false);
         m_ShowObjectObjects[m_CurrentObjectIndex].SetActive(true);
         m_PastObjectIndex = m_CurrentObjectIndex;
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion

@@ -26,24 +26,9 @@ public class StartDialogueTrigger : MonoBehaviour
 
     public void StartDialogue()
     {
-        var _DialogueManager = DialogueManager.Instance;
-
-        if (_DialogueManager == null)
-        {
-            DebugWarning("DialogueManager instance is null.");
-            return;
-        }
+        DialogueManager _DialogueManager = DialogueManager.Instance;
 
         _DialogueManager.StartDialogue(m_DialogueIndex);
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion

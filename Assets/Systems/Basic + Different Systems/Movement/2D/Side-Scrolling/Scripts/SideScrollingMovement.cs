@@ -30,10 +30,6 @@ public class SideScrollingMovement : MonoBehaviour
     private void GetComponents()
     {
         m_RB = GetComponent<Rigidbody>();
-        if (m_RB == null)
-        {
-            DebugWarning("No Rigidbody component found. Please add a Rigidbody component to the GameObject");
-        }
     }
 
     #endregion
@@ -66,10 +62,6 @@ public class SideScrollingMovement : MonoBehaviour
     private void GetGroundCheck()
     {
         m_GroundCheck = transform.Find("GroundCheck");
-        if (m_GroundCheck == null)
-        {
-            DebugWarning("No GroundCheck object found. Please create an empty GameObject and name it 'GroundCheck'");
-        }
     }
 
     public void OnJump(InputAction.CallbackContext _context)
@@ -103,15 +95,6 @@ public class SideScrollingMovement : MonoBehaviour
             isCrouching = false;
             Debug.Log("Standing up");
         }
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _message)
-    {
-        Debug.LogWarning("Warning: " + _message);
     }
 
     #endregion

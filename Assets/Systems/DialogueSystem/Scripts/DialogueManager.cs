@@ -19,8 +19,10 @@ public class DialogueManager : MonoBehaviour
                 m_Instance = FindFirstObjectByType<DialogueManager>();
                 if (m_Instance == null)
                 {
-                    GameObject _obj = new();
-                    _obj.name = typeof(DialogueManager).Name;
+                    GameObject _obj = new()
+                    {
+                        name = typeof(DialogueManager).Name
+                    };
                     m_Instance = _obj.AddComponent<DialogueManager>();
                 }
             }
@@ -85,7 +87,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(int _dialogueIndex)
     {
-        // Stop the player from moving
+        // TODO - Stop the player from moving
         m_DialogueBox.SetActive(true);
         StartCoroutine(DialogueCoroutine(_dialogueIndex));
     }
@@ -115,7 +117,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        // Reset the player speed
+        // TODO - Reset the player speed
         DisableDialogueBox();
     }
 

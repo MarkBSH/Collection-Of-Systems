@@ -99,13 +99,4 @@ public class ShowcaseColorChanger : MonoBehaviour
     }
 
     #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
-    }
-
-    #endregion
 }

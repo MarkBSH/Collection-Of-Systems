@@ -72,11 +72,6 @@ public class InventoryManager : MonoBehaviour
     public void RemoveItem(Item _item, int _amount)
     {
         int _Index = m_Items.IndexOf(_item);
-        if (_Index < 0)
-        {
-            DebugWarning("Item not found in inventory.");
-            return;
-        }
 
         m_ItemAmounts[_Index] -= _amount;
         if (m_ItemAmounts[_Index] <= 0)
@@ -110,11 +105,6 @@ public class InventoryManager : MonoBehaviour
     private void InitializeInventoryUI()
     {
         m_InventoryUI = GameObject.Find("InventoryUI");
-        if (m_InventoryUI == null)
-        {
-            DebugWarning("InventoryUI GameObject not found.");
-            return;
-        }
         for (int i = 0; i < m_InventoryUI.transform.childCount; i++)
         {
             Transform child = m_InventoryUI.transform.GetChild(i);
@@ -140,15 +130,6 @@ public class InventoryManager : MonoBehaviour
                 m_InventoryText[i].gameObject.SetActive(false);
             }
         }
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _warning)
-    {
-        Debug.LogWarning("Warning: " + _warning);
     }
 
     #endregion

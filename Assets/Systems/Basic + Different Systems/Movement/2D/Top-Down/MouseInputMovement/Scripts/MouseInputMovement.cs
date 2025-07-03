@@ -26,10 +26,6 @@ public class MouseInputMovement : MonoBehaviour
     private void GetComponents()
     {
         m_Agent = GetComponent<NavMeshAgent>();
-        if (m_Agent == null)
-        {
-            DebugWarning("No NavMeshAgent component found. Please add a NavMeshAgent component to the GameObject");
-        }
     }
 
     #endregion
@@ -64,7 +60,6 @@ public class MouseInputMovement : MonoBehaviour
         {
             return true;
         }
-        DebugWarning("Raycast did not hit anything");
         return false;
     }
 
@@ -94,10 +89,6 @@ public class MouseInputMovement : MonoBehaviour
     private bool CalculatePath()
     {
         NavMesh.CalculatePath(transform.position, m_Target, NavMesh.AllAreas, m_Path);
-        if (m_Path.status != NavMeshPathStatus.PathComplete)
-        {
-            DebugWarning("Path could not be calculated");
-        }
         return m_Path.status == NavMeshPathStatus.PathComplete;
     }
 
@@ -105,15 +96,6 @@ public class MouseInputMovement : MonoBehaviour
     {
         m_Target = _hit.point;
         m_Agent.SetDestination(m_Target);
-    }
-
-    #endregion
-
-    #region Debugging
-
-    private void DebugWarning(string _message)
-    {
-        Debug.LogWarning("Warning: " + _message);
     }
 
     #endregion
