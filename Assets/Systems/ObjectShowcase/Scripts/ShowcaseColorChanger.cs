@@ -16,8 +16,7 @@ public class ShowcaseColorChanger : MonoBehaviour
                 m_Instance = FindFirstObjectByType<ShowcaseColorChanger>();
                 if (m_Instance == null)
                 {
-                    GameObject _obj = new();
-                    _obj.name = typeof(ShowcaseColorChanger).Name;
+                    GameObject _obj = new(typeof(ShowcaseColorChanger).Name);
                     m_Instance = _obj.AddComponent<ShowcaseColorChanger>();
                 }
             }

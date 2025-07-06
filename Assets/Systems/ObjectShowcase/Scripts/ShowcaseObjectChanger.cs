@@ -16,7 +16,7 @@ public class ShowcaseObjectChanger : MonoBehaviour
                 m_Instance = FindFirstObjectByType<ShowcaseObjectChanger>();
                 if (m_Instance == null)
                 {
-                    GameObject _obj = new GameObject(typeof(ShowcaseObjectChanger).Name);
+                    GameObject _obj = new(typeof(ShowcaseObjectChanger).Name);
                     m_Instance = _obj.AddComponent<ShowcaseObjectChanger>();
                 }
             }
