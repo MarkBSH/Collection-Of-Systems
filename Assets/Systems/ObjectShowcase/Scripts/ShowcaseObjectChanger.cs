@@ -71,6 +71,7 @@ public class ShowcaseObjectChanger : MonoBehaviour
 
     private void StartShowcaseObject()
     {
+        // UI Setup
         foreach (GameObject _obj in m_ShowObjectObjects)
         {
             _obj.SetActive(false);

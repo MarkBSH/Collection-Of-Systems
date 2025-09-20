@@ -59,6 +59,7 @@ public class ShowcaseColorChanger : MonoBehaviour
 
     private void StartShowcaseObject()
     {
+        // UI Setup
         foreach (GameObject obj in m_ColorShowcaseObjects)
         {
             obj.SetActive(false);
