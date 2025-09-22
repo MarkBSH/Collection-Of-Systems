@@ -1,7 +1,7 @@
-Includes:
-A small dialogue system
-A inventory system
-A showcase podium
+Includes:  
+A small dialogue system  
+A inventory system  
+A showcase podium  
 
 Camera for:
 2D Side scrolling, 2D Top down  
